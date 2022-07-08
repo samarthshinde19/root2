@@ -1,0 +1,8 @@
+<form action="{% url 'changing' %}" method="post">
+    {% csrf_token %}
+<input name="email" type="email"/>
+<button type="submit">Send Message</button>
+</form>
+
+
+

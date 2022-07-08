@@ -1,0 +1,200 @@
+{% load static %}
+{% if user.is_authenticated %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>room status</title>
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+        <link href="{% static 'back/css/styles.css' %} " rel="stylesheet" />
+        <link href="{% static 'front/im/style.css' %}" rel="stylesheet">
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    </head>
+    <body class="sb-nav-fixed">
+        <header id="header" class="fixed-top">
+            <div class="container d-flex align-items-center">
+        
+              <h1 class="logo me-auto"><a href="index.html">Room Allotment</a></h1>
+              <!-- Uncomment below if you prefer to use an image logo -->
+              <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+        
+              <nav id="navbar" class="navbar order-last order-lg-0">
+                <ul>
+                  <li><a class="active" href="{% url 'first' %}">Home</a></li>
+                  
+                  
+                  <li><a href="{% url 'status' %}">Room Availability</a></li>
+                  
+        
+                  <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                      <li><a href="{% url 'image' %}">Images</a></li>
+                      
+                      <li><a href="#">Videos</a></li>
+                      
+                    </ul>
+                  </li>
+                  <li><a href="{% url 'messaging' %}">Contact us </a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+              </nav><!-- .navbar -->
+        
+              <a href="{% url 'forming' %}" class="get-started-btn">Book Room</a>
+              <a href="{% url 'outing' %}" class="get-started-btn">Log out</a>
+        
+            </div>
+          </header><!-- End Header -->
+        
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4">
+                        <h1 class="mt-4">Tables</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item"><a href="{% url 'panel' %}">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Tables</li>
+                        </ol>
+                        
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                ROOM database
+                            </div>
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>BLOCK</th>
+                                            <th>Type</th>
+                                            <th>Roomno</th>
+                                            <th>capacity</th>
+                                            <th>Availability</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>BLOCK</th>
+                                            <th>Type</th>
+                                            <th>Roomno</th>
+                                            <th>capacity></th>
+                                            <th>Availability</th>
+                                            
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        
+                                        
+                                       
+                                        
+                                        
+                                        
+                                       
+                                        {% for obj in room %}
+                                        <tr>
+                                            <td>{{obj.pk}}</td>
+                                            <td>{{obj.Block}}</td>
+                                            <td>{{obj.Type}}</td>
+                                            <td>{{obj.Roomno}}</td>
+                                            <td>{{obj.capacity}}</td>
+                                            <td>{{obj.Availability}}</td>
+                                            
+                                            
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                    </div>
+                </main>
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; IITDHARWAD 2022</div>
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="{% static 'back/js/scripts.js' %} "></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+        <script src="{% static 'back/js/datatables-simple-demo.js' %}"></script>
+    </body>
+</html>
+{% else %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>ERROR</title>
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+        <link href="{% static 'back/css/styles.css' %} " rel="stylesheet" />
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    </head>
+    <body class="sb-nav-fixed">
+        
+        <div id="layoutSidenav">
+            
+            <div id="layoutSidenav_content">
+                <main>
+                    <div id="layoutError">
+                        <div id="layoutError_content">
+                            <main>
+                                <div class="container">
+                                    <div class="row justify-content-center">
+                                        <div class="col-lg-6">
+                                            <div class="text-center mt-4">
+                                                <img class="mb-4 img-error" src="{% static 'back/assets/img/error-404-monochrome.svg' %}" />
+                                                <p class="lead">Please login</p>
+                                                <a href="{% url 'mylogin' %}">
+                                                    <i class="fas fa-arrow-left me-1"></i>
+                                                    GO TO LOGIN 
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </main>
+                        </div>
+                </main>    
+                
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="{% static 'back/js/scripts.js' %} "></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+        <script src="{% static 'back/js/datatables-simple-demo.js' %}"></script>
+    </body>
+</html>
+
+
+    
+
+
+{% endif %}
+

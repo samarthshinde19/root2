@@ -1,0 +1,13 @@
+t=int(input())
+for m in range(t):
+    sum=0
+    s=input()
+    f=input()
+    for i in s:
+        w=100
+        for j in f:
+            e=min(abs(ord(i)-ord(j)),ord('z')-abs(ord(i)-ord(j)))
+            if(e<w):
+                w=e
+        sum=sum+w
+    print("Case #%d: %d"%(m,sum))

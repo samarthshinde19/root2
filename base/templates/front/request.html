@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<!--divinectorweb.com-->
+<head>
+    <meta charset="UTF-8">
+    <title>How to make Responsive Website with video background</title>
+    
+    <link href="{% static 'front/im/hi.css' %}" rel="stylesheet">   
+</head>
+<body>
+    <header>
+		<h3><a href="{% url 'status' %}">Room Availability</a></h3> 
+		<ul class="nav">  
+			<li><a href="{% url 'first' %}">Home</a></li>
+			 
+			
+			<li><a href="{% url 'messaging' %}">Contact</a></li> 
+		</ul>
+	</header>
+	
+	<section class="box">  
+		<video src="{% static 'front/im/4.mp4' %}" autoplay muted loop></video>
+        <!-- <img src="hi.jpg" alt="Room not Available"> -->
+		<h2>{{result}}</h2> 
+		<h3>Sorry for Inconvience</h3>
+		<a href="{% url 'messaging' %}" class="boxBtn">Contact Us</a>   
+	</section>
+</body>
+</html>
